@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Planning Poker</string>
+    <string name="menu_title_how2use">How to use</string>
+    <string name="menu_title_exit">Exit</string>
+    <string name="description_how2use">This app is simple Agile planning poker.
+    Please could you swipe or select any card.</string>
+    <string name="close">Close</string>
+</resources>

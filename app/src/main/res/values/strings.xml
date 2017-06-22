@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Planning Poker</string>
+    <string name="menu_title_how2use">使い方</string>
+    <string name="menu_title_exit">終了</string>
+    <string name="description_how2use">シンプルな Planning Poker です。タップか上スワイプでカードを選択します。</string>
+    <string name="close">閉じる</string>
+</resources>
