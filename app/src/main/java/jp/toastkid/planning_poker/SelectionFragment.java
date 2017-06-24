@@ -112,7 +112,6 @@ public class SelectionFragment extends Fragment {
         void setText(final String text) {
             textView.setText(text);
             if (text.codePointCount(0, text.length()) >= 3) {
-                Log.i("code", text + " " + text.codePointCount(0, text.length()));
                 textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 120);
             }
         }

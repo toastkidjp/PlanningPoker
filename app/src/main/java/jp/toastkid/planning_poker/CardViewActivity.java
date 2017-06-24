@@ -26,7 +26,6 @@ public class CardViewActivity extends AppCompatActivity {
         textView.setText(text);
         if (text.length() >= 3) {
             textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 120);
-
         }
     }
 
