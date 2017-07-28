@@ -87,7 +87,7 @@ public class SelectionFragment extends Fragment {
         @Override
         public CardViewHolder onCreateViewHolder(final ViewGroup parent, final int viewType) {
             final LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-            final View cardView = inflater.inflate(R.layout.card_item, null);
+            final View cardView = inflater.inflate(R.layout.card_item, parent, false);
             return new CardViewHolder(cardView);
         }
 
