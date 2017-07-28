@@ -6,4 +6,33 @@
     <string name="description_how2use">This app is simple Agile planning poker.
     Please could you swipe or select any card.\n\nAuthor: @toastkidjp</string>
     <string name="close">Close</string>
+    <string name="title_privacy_policy">Privacy Policy</string>
+    <string name="message_privacy_policy"><![CDATA[
+This Privacy Policy applies to all information that toastkidjp (hereinafter "I") handles, which can be directly or indirectly identifiable by the user. The definition of "personal information" follows the "law concerning the protection of personal information".
+Management of personal information
+
+In order to keep personal information of users accurate and up to date, and to prevent unauthorized access to personal information, loss, damage, falsification, leakage, etc., it is necessary for me to thoroughly maintain the maintenance system of security system etc. Take measures, implement safety measures and implement strict management of personal information.
+Purpose of using personal information
+
+Personal information you keep from the user will only be used for data storage within each application, targeting advertisement.
+Prohibition of disclosure and provision of personal information to third parties
+
+I will properly manage the personal information kept by the user and will not disclose personal information to a third party.
+
+However, unless one of the following applies.
+
+    When there is user consent
+    When the user discloses to a contractor entrusted with operations for the user to perform the desired service
+    When it is necessary to disclose it based on laws and regulations
+
+Security measures for personal information
+
+I will take every possible measure for security in order to ensure the accuracy and safety of personal information.
+Referrals of the principal
+
+When the user wishes to inquire, modify, delete, etc. the personal information of the person himself / herself, we will confirm that you are the identity, we will correspond.
+Compliance with laws and regulations, norms and review
+
+I will comply with Japanese laws and regulations applicable to personal information held, and other norms, review the content of this policy as appropriate and make efforts to improve it.
+    ]]></string>
 </resources>

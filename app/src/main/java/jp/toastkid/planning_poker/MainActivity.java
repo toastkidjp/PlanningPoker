@@ -102,6 +102,19 @@ public class MainActivity extends AppCompatActivity {
             finish();
             return true;
         }
+        if (id == R.id.privacy_policy) {
+            new AlertDialog.Builder(this)
+                    .setTitle(R.string.title_privacy_policy)
+                    .setMessage(R.string.message_privacy_policy)
+                    .setCancelable(true)
+                    .setPositiveButton(R.string.close, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    })
+                    .show();
+        }
 
         return super.onOptionsItemSelected(item);
     }

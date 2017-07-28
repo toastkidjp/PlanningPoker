@@ -3,4 +3,8 @@
     <color name="colorPrimary">#002277</color>
     <color name="colorPrimaryDark">#000055</color>
     <color name="toolbar_text">#FFEEEEEE</color>
+    <color name="transparent">#00000000</color>
+    <color name="ripple">#FFE0E0E0</color>
+    <color name="pre4_ripple">#FFAAAAAA</color>
+
 </resources>
