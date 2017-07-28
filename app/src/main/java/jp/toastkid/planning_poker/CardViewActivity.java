@@ -21,7 +21,7 @@ public class CardViewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_card);
-        final TextView textView = (TextView) findViewById(R.id.card_activity_text);
+        final TextView textView = (TextView) findViewById(R.id.card_text);
         final String text = getIntent().getStringExtra(EXTRA_KEY_CARD_TEXT);
         textView.setText(text);
         if (text.length() >= 3) {
