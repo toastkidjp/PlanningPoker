@@ -44,10 +44,15 @@ public class SelectionFragment extends Fragment {
     public void onViewCreated(final View view, final Bundle savedInstanceState) {
         final RecyclerView containerView
                 = (RecyclerView) view.findViewById(R.id.cards_view);
-        containerView.setLayoutManager(
-                new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
         final Adapter adapter = new Adapter();
         containerView.setAdapter(adapter);
+
+        final LinearLayoutManager layoutManager
+                = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+        containerView.setLayoutManager(layoutManager);
+
+        layoutManager.scrollToPosition(adapter.medium());
+
         new ItemTouchHelper(
                 new ItemTouchHelper.SimpleCallback(ItemTouchHelper.UP, ItemTouchHelper.UP) {
                     @Override
@@ -75,6 +80,10 @@ public class SelectionFragment extends Fragment {
 
     private class Adapter extends RecyclerView.Adapter<CardViewHolder> {
 
+        private final int maximumSize = Suite.values().length * 50;
+
+        private final int medium = maximumSize / 2;
+
         @Override
         public CardViewHolder onCreateViewHolder(final ViewGroup parent, final int viewType) {
             final LayoutInflater inflater = LayoutInflater.from(parent.getContext());
@@ -84,7 +93,7 @@ public class SelectionFragment extends Fragment {
 
         @Override
         public void onBindViewHolder(final CardViewHolder holder, final int position) {
-            final String text = Suite.values()[position].text;
+            final String text = Suite.values()[position % Suite.values().length].text;
             holder.setText(text);
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -96,7 +105,11 @@ public class SelectionFragment extends Fragment {
 
         @Override
         public int getItemCount() {
-            return Suite.values().length;
+            return maximumSize;
+        }
+
+        int medium() {
+            return medium;
         }
     }
 
