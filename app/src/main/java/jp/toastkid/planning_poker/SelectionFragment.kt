@@ -17,12 +17,12 @@ import kotlinx.android.synthetic.main.fragment_main.*
 /**
  * @author toastkidjp
  */
-
 class SelectionFragment : Fragment() {
 
     private enum class Suite(val text: String) {
-        ZERO("0"), HALF("1/2"), ONE("1"), TWO("2"), THREE("3"), FIVE("5"), EIGHT("8"),
-        THIRTEEN("13"), TWENTY("20"), FORTY("40"), HUNDRED("100"), QUESTION("?"), INFINITE("∞")
+        ZERO("0"), HALF("1/2"), ONE("1"), TWO("2"), THREE("3"),
+        FIVE("5"), EIGHT("8"), THIRTEEN("13"), TWENTY("20"), FORTY("40"),
+        HUNDRED("100"), QUESTION("?"), INFINITE("∞")
     }
 
     override fun onCreateView(
@@ -38,7 +38,8 @@ class SelectionFragment : Fragment() {
         val adapter = Adapter()
         cards_view.adapter = adapter
 
-        val layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        val layoutManager =
+                LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         cards_view.layoutManager = layoutManager
 
         layoutManager.scrollToPosition(adapter.medium())
@@ -94,7 +95,8 @@ class SelectionFragment : Fragment() {
         }
     }
 
-    private inner class CardViewHolder internal constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    private inner class CardViewHolder internal constructor(itemView: View)
+        : RecyclerView.ViewHolder(itemView) {
 
         private val textView: TextView = itemView.findViewById(R.id.card_text)
 
