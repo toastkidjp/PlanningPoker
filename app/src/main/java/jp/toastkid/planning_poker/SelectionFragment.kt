@@ -20,7 +20,7 @@ import kotlinx.android.synthetic.main.fragment_main.*
 
 class SelectionFragment : Fragment() {
 
-    private enum class Suite private constructor(val text: String) {
+    private enum class Suite(val text: String) {
         ZERO("0"), HALF("1/2"), ONE("1"), TWO("2"), THREE("3"), FIVE("5"), EIGHT("8"),
         THIRTEEN("13"), TWENTY("20"), FORTY("40"), HUNDRED("100"), QUESTION("?"), INFINITE("∞")
     }
