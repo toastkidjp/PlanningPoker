@@ -30,6 +30,7 @@ class SelectionFragment : Fragment() {
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
+        super.onCreateView(inflater, container, savedInstanceState)
         return inflater.inflate(R.layout.fragment_main, container, false)
     }
 
@@ -95,11 +96,7 @@ class SelectionFragment : Fragment() {
 
     private inner class CardViewHolder internal constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        private val textView: TextView
-
-        init {
-            textView = itemView.findViewById(R.id.card_text) as TextView
-        }
+        private val textView: TextView = itemView.findViewById(R.id.card_text)
 
         internal fun setText(text: String) {
             textView.text = text
