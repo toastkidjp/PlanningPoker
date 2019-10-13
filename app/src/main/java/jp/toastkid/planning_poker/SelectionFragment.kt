@@ -1,11 +1,11 @@
 package jp.toastkid.planning_poker
 
+import android.content.ActivityNotFoundException
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.helper.ItemTouchHelper
-import android.util.Log
 import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
@@ -25,14 +25,14 @@ class SelectionFragment : Fragment() {
     }
 
     override fun onCreateView(
-            inflater: LayoutInflater?,
+            inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        return inflater!!.inflate(R.layout.fragment_main, container, false)
+        return inflater.inflate(R.layout.fragment_main, container, false)
     }
 
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val adapter = Adapter()
         cards_view.adapter = adapter
 
@@ -107,8 +107,15 @@ class SelectionFragment : Fragment() {
         }
 
         internal fun open() {
-            startActivity(
-                    CardViewActivity.makeIntent(context, textView.text.toString()))
+            try {
+                context?.let {
+                    startActivity(
+                            CardViewActivity.makeIntent(it, textView.text.toString())
+                    )
+                }
+            } catch (e: ActivityNotFoundException) {
+                e.printStackTrace()
+            }
         }
     }
 }
