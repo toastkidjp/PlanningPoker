@@ -1,11 +1,12 @@
 package jp.toastkid.planning_poker
 
+import android.content.ActivityNotFoundException
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.LinearSnapHelper
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.helper.ItemTouchHelper
-import android.util.Log
 import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
@@ -16,27 +17,29 @@ import kotlinx.android.synthetic.main.fragment_main.*
 /**
  * @author toastkidjp
  */
-
 class SelectionFragment : Fragment() {
 
-    private enum class Suite private constructor(val text: String) {
-        ZERO("0"), HALF("1/2"), ONE("1"), TWO("2"), THREE("3"), FIVE("5"), EIGHT("8"),
-        THIRTEEN("13"), TWENTY("20"), FORTY("40"), HUNDRED("100"), QUESTION("?"), INFINITE("∞")
+    private enum class Suite(val text: String) {
+        ZERO("0"), HALF("1/2"), ONE("1"), TWO("2"), THREE("3"),
+        FIVE("5"), EIGHT("8"), THIRTEEN("13"), TWENTY("20"), FORTY("40"),
+        HUNDRED("100"), QUESTION("?"), INFINITE("∞")
     }
 
     override fun onCreateView(
-            inflater: LayoutInflater?,
+            inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        return inflater!!.inflate(R.layout.fragment_main, container, false)
+        super.onCreateView(inflater, container, savedInstanceState)
+        return inflater.inflate(R.layout.fragment_main, container, false)
     }
 
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val adapter = Adapter()
         cards_view.adapter = adapter
 
-        val layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        val layoutManager =
+                LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         cards_view.layoutManager = layoutManager
 
         layoutManager.scrollToPosition(adapter.medium())
@@ -62,6 +65,7 @@ class SelectionFragment : Fragment() {
                         (viewHolder as CardViewHolder).open()
                     }
                 }).attachToRecyclerView(cards_view)
+        LinearSnapHelper().attachToRecyclerView(cards_view)
     }
 
     private inner class Adapter : RecyclerView.Adapter<CardViewHolder>() {
@@ -91,13 +95,10 @@ class SelectionFragment : Fragment() {
         }
     }
 
-    private inner class CardViewHolder internal constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    private inner class CardViewHolder internal constructor(itemView: View)
+        : RecyclerView.ViewHolder(itemView) {
 
-        private val textView: TextView
-
-        init {
-            textView = itemView.findViewById(R.id.card_text) as TextView
-        }
+        private val textView: TextView = itemView.findViewById(R.id.card_text)
 
         internal fun setText(text: String) {
             textView.text = text
@@ -107,8 +108,15 @@ class SelectionFragment : Fragment() {
         }
 
         internal fun open() {
-            startActivity(
-                    CardViewActivity.makeIntent(context, textView.text.toString()))
+            try {
+                context?.let {
+                    startActivity(
+                            CardViewActivity.makeIntent(it, textView.text.toString())
+                    )
+                }
+            } catch (e: ActivityNotFoundException) {
+                e.printStackTrace()
+            }
         }
     }
 }
